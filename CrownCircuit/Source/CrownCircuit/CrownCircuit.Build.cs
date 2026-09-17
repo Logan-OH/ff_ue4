@@ -17,7 +17,8 @@ public class CrownCircuit : ModuleRules
             "SlateCore",
             "HTTP",
             "Json",
-            "JsonUtilities"
+            "JsonUtilities",
+            "WebSockets"
         });
     }
 }
