@@ -1,0 +1,19 @@
+{
+  "FileVersion": 3,
+  "Category": "Games",
+  "Description": "Crown Circuit - Blueprint-first fantasy hero league simulation",
+  "Modules": [
+    {
+      "Name": "CrownCircuit",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ],
+  "Plugins": [
+    {
+      "Name": "ModelingToolsEditorMode",
+      "Enabled": true,
+      "TargetAllowList": ["Editor"]
+    }
+  ]
+}
