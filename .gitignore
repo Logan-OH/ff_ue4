@@ -1,0 +1,19 @@
+# Unreal
+CrownCircuit/Binaries/
+CrownCircuit/DerivedDataCache/
+CrownCircuit/Intermediate/
+CrownCircuit/Saved/
+CrownCircuit/.vs/
+CrownCircuit/*.sln
+
+# Python
+backend/.venv/
+backend/__pycache__/
+backend/**/*.pyc
+backend/.env
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
