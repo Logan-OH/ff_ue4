@@ -14,7 +14,7 @@ public:
     ACCOperationDirector();
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Crown Circuit|Operation") FName OperationId;
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Crown Circuit|Operation") FName FocusLane = TEXT("global");
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Crown Circuit|Operation") FName CurrentFocusLane = TEXT("global");
     UPROPERTY(BlueprintAssignable, Category="Crown Circuit|Operation") FCCLaneFocusChanged OnLaneFocusChanged;
 
     UFUNCTION(BlueprintCallable, Category="Crown Circuit|Operation") void FocusLane(FName LaneId);
