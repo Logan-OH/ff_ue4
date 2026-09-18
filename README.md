@@ -1,23 +1,35 @@
-# Crown Circuit — Unreal Migration
+# Crown Circuit — Unreal migration
 
-Crown Circuit is being migrated from the original Flask/HTML/JavaScript prototype into a Blueprint-first Unreal Engine client with a lightweight Python API backend.
+This repository is the new Unreal Engine version of Crown Circuit. The existing web build remains frozen separately as a fallback/reference implementation.
 
-## High-level architecture
+## Architecture
 
-- `CrownCircuit/` — Unreal Engine project
-- `backend/` — Flask API and authoritative league state
-- `shared/` — data contracts shared between Unreal and the backend
-- `docs/` — migration notes, Blueprint architecture, and development workflow
+```text
+Browser (later, Pixel Streaming)
+        ↓
+Unreal Engine client
+Blueprints / UMG / Niagara / maps / cameras
+        ↓ HTTP + WebSocket
+Python API
+leagues / draft / rosters / transactions / scoring / operation events
+        ↓
+database
+```
 
-The legacy web prototype is intentionally kept outside this repository as a fallback/reference implementation.
+## Repository
 
-## First milestone
+- `CrownCircuit/` — Unreal project and Blueprint-facing C++ foundation
+- `backend/` — FastAPI service
+- `shared/` — shared schemas/data
+- `tools/` — hero/data migration utilities
+- `docs/` — Blueprint and migration documentation
 
-1. Open the Unreal project.
-2. Create Blueprint assets from the supplied base classes / interfaces.
-3. Import hero JSON into a Data Table or Data Assets.
-4. Run the Python backend locally.
-5. Connect the Unreal HTTP client to `http://127.0.0.1:8000`.
-6. Rebuild the existing league → draft → roster → live operation loop.
+## Start here
 
-See `docs/UNREAL_MIGRATION.md` for the full migration plan.
+Read `docs/FIRST_RUN.md`, then `docs/UNREAL_MIGRATION.md` and `docs/BLUEPRINT_ARCHITECTURE.md`.
+
+The migration branch is `feature/unreal-migration`.
+
+## Design principle
+
+Crown Circuit is Blueprint-first. C++ only provides stable integration/data primitives. The visual game, cameras, lane flow, characters, VFX, and UMG remain editable in Blueprints.
