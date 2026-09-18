@@ -21,8 +21,21 @@ void UCCBackendSubsystem::SaveLineup(const TArray<FString>& HeroIds)
 {
     TSharedRef<FJsonObject> Root = MakeShared<FJsonObject>();
     TArray<TSharedPtr<FJsonValue>> Values;
-    for (const FString& Id : HeroIds) Values.Add(Id.IsEmpty() ? MakeShared<FJsonValueNull>() : MakeShared<FJsonValueString>(Id));
+
+    for (const FString& Id : HeroIds)
+    {
+        if (Id.IsEmpty())
+        {
+            Values.Add(MakeShared<FJsonValueNull>());
+        }
+        else
+        {
+            Values.Add(MakeShared<FJsonValueString>(Id));
+        }
+    }
+
     Root->SetArrayField(TEXT("lineup"), Values);
+
     FString Body;
     TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Body);
     FJsonSerializer::Serialize(Root, Writer);
